@@ -13,14 +13,12 @@ const ReactionButtons = ({ post }) => {
   const dispatch = useDispatch()
   
   const reactionButtons = Object.entries(reactionEmoji).map(([name, emoji]) => {
-  const handleClickButton = () => dispatch(reactionAdded({ postId: post.id, reaction: name }))
-
     return (
       <button
         key={name}
         type="button"
         className="reactionButton"
-        onClick={handleClickButton}
+        onClick={() => dispatch(reactionAdded({ postId: post.id, reaction: name }))}
       >
         {emoji} {post.reactions[name]}
       </button>
